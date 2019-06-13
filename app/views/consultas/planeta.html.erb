@@ -1,0 +1,51 @@
+<center><h1>Planet: <%= @result.data.planet.name %></h1></center>
+
+<h4>Diameter: <%= @result.data.planet.diameter %></h4>
+
+<h4>Rotation period: <%= @result.data.planet.rotation_period %></h4>
+
+<h4>Orbital Period: <%= @result.data.planet.orbital_period %></h4>
+
+<h4>Gravity: <%= @result.data.planet.gravity %></h4>
+
+<h4>Population: <%= @result.data.planet.population %></h4>
+
+<h4>Climates:</h4> 
+<ul>
+  <% @result.data.planet.climates.each do |clima|%> </h4>
+  	<li><%= clima %></li>
+  <% end %>
+</ul>
+
+<h4>Terrains:</h4>
+<ul>
+	<% @result.data.planet.terrains.each do |terreno| %>
+		<li><%= terreno %></li>
+	<% end %>
+</ul>
+
+<h4>Surface water: <%= @result.data.planet.surface_water %></h4>
+
+<table class="table">
+	<h2>Films</h2>
+	<thead>
+		<th>Film name</th>
+	</thead>
+	<tbody>
+		<% @result.data.planet.film_connection.films.each do |film| %>
+			<tr><td><%= link_to film.title, consulta_especifica_path(id: film.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<h2>Characters</h2>
+	<thead>
+		<th>Character name</th>
+	</thead>
+	<tbody>
+		<% @result.data.planet.resident_connection.residents.each do |person| %>
+			<tr><td><%= link_to person.name, persona_path(id: person.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>

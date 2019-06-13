@@ -1,0 +1,39 @@
+<center><h1>Film name: <%= @result.data.film.title %></h1></center>
+
+<h4>Release date: <%= @result.data.film.release_date %></h4>
+<h4>Director: <%= @result.data.film.director %></h4>
+<h4>Producers:</h4>
+<ul>
+	<% @result.data.film.producers.each do |producer| %>
+		<li><%= producer %></li>
+	<% end %>
+</ul>
+<h4>Episode id: <%= @result.data.film.episode_id %></h4>
+
+
+<table class="table">
+	<h2>Characters</h2>
+	<tbody>
+		<% @result.data.film.character_connection.characters.each do |character| %>
+			<tr><td><%= link_to character.name, persona_path(id: character.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<h2>Starships</h2>
+	<tbody>
+		<% @result.data.film.starship_connection.starships.each do |starship| %>
+			<tr><td><%= link_to starship.name, nave_path(id: starship.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<h2>Planets</h2>
+	<tbody>
+		<% @result.data.film.planet_connection.planets.each do |planet| %>
+			<tr><td><%= link_to planet.name, planeta_path(id: planet.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>

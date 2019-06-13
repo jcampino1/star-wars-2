@@ -1,0 +1,22 @@
+<h1>Star wars</h1>
+
+<table class="table">
+	<thead>
+		<th>Nombre</th>
+		<th>Ano de Lanzamiento</th>
+		<th>Director</th>
+		<th>Productor/es</th>
+		<th>Numero de episodio</th>
+	</thead>
+	<tbody>
+		<% @result.data.all_films.films.each do |film| %>
+			<tr>
+				<td><%= link_to film.title, consulta_especifica_path(id: film.id) %></td>
+				<td><%= film.release_date[0..3] %></td>
+				<td><%= film.director %></td>
+				<td><%= film.producers.join(", ") %></td>
+				<td><%= film.episode_id %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

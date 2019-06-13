@@ -1,0 +1,54 @@
+<center><h1>Starship: <%= @result.data.starship.name %></h1></center>
+
+<h4>Model: <%= @result.data.starship.model %></h4>
+
+<h4>Starship class: <%= @result.data.starship.starship_class %></h4>
+
+<h4>Manufacturers</h4>
+<ul>
+	<% @result.data.starship.manufacturers.each do |manufacturer| %>
+		<li><%= manufacturer %></li>
+	<% end %>
+</ul>
+
+<h4>Cost in credits: <%= @result.data.starship.cost_in_credits %></h4>
+
+<h4>Length: <%= @result.data.starship.length %></h4>
+
+<h4>Crew: <%= @result.data.starship.crew %></h4>
+
+<h4>Passengers: <%= @result.data.starship.passengers %></h4>
+
+<h4>Max atmosphering speed: <%= @result.data.starship.max_atmosphering_speed %></h4>
+
+<h4>Hyperdrive rating: <%= @result.data.starship.hyperdrive_rating %></h4>
+
+<h4>MGLT: <%= @result.data.starship.mglt %></h4>
+
+<h4>Cargo capacity: <%= @result.data.starship.cargo_capacity %></h4>
+
+<h4>Consumables: <%= @result.data.starship.consumables %></h4>
+
+<table class="table">
+	<h2>Films</h2>
+	<thead>
+		<th>Film name</th>
+	</thead>
+	<tbody>
+		<% @result.data.starship.film_connection.films.each do |film| %>
+			<tr><td><%= link_to film.title, consulta_especifica_path(id: film.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<h2>Pilots</h2>
+	<thead>
+		<th>Pilot name</th>
+	</thead>
+	<tbody>
+		<% @result.data.starship.pilot_connection.pilots.each do |person| %>
+			<tr><td><%= link_to person.name, persona_path(id: person.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>

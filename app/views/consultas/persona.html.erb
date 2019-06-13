@@ -1,0 +1,35 @@
+<center><h1>Character: <%= @result.data.person.name %></h1></center>
+
+<h4>Birth year: <%= @result.data.person.birth_year %></h4>
+
+<h4>Eye color: <%= @result.data.person.eye_color %></h4>
+
+<h4>Gender: <%= @result.data.person.gender %></h4>
+
+<h4>Hair color: <%= @result.data.person.hair_color %></h4>
+
+<h4>Height: <%= @result.data.person.height %> </h4>
+
+<h4>Mass: <%= @result.data.person.mass %></h4>
+
+<h4>Skin color: <%= @result.data.person.skin_color %></h4>
+
+<h4>Homeworld: <%= link_to @result.data.person.homeworld.name, planeta_path(id: @result.data.person.homeworld.id) %></h4>
+
+<table class="table">
+	<h2>Films</h2>
+	<tbody>
+		<% @result.data.person.film_connection.films.each do |film| %>
+			<tr><td><%= link_to film.title, consulta_especifica_path(id: film.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
+
+<table class="table">
+	<h2>Starships</h2>
+	<tbody>
+		<% @result.data.person.starship_connection.starships.each do |starship| %>
+			<tr><td><%= link_to starship.name, nave_path(id: starship.id) %></td></tr>
+		<% end %>
+	</tbody>
+</table>
